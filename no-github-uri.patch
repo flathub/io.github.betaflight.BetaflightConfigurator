@@ -1,0 +1,23 @@
+diff --git a/package-lock.json b/package-lock.json
+index dceb1af4..c2a07a0e 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -2206,7 +2206,7 @@
+         "semver": "2.3.2",
+         "simple-glob": "0.1.0",
+         "tar-fs": "1.16.0",
+-        "temp": "github:adam-lynch/node-temp#279c1350cb7e4f02515d91da9e35d39a40774016",
++        "temp": "https://github.com/adam-lynch/node-temp/tarball/279c1350cb7e4f02515d91da9e35d39a40774016",
+         "thenify": "3.3.0",
+         "update-notifier": "1.0.3",
+         "winresourcer": "0.9.0"
+@@ -2236,7 +2236,8 @@
+           "dev": true
+         },
+         "temp": {
+-          "version": "github:adam-lynch/node-temp#279c1350cb7e4f02515d91da9e35d39a40774016",
++          "version": "https://github.com/adam-lynch/node-temp/tarball/279c1350cb7e4f02515d91da9e35d39a40774016",
++          "integrity": "sha1-gaPGCgVkIGpA4DdaGwvhJTauZYo=",
+           "dev": true,
+           "requires": {
+             "rimraf": "2.2.8"
