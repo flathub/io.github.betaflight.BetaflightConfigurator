@@ -108,10 +108,18 @@
                     "path": "no-github-uri.patch"
                 },
                 {
+                    "only-arches": ["x86_64"],
                     "type": "archive",
                     "url": "https://dl.nwjs.io/v0.27.0/nwjs-v0.27.0-linux-x64.tar.gz",
                     "sha256": "0fa0814c8ad0fc2105e79557b199bbb931980f37b906785d325d9f4f3f409f70",
                     "dest": "cache/0.27.0-normal/linux64"
+                },
+                {
+                    "only-arches": ["i386"],
+                    "type": "archive",
+                    "url": "https://dl.nwjs.io/v0.27.0/nwjs-v0.27.0-linux-ia32.tar.gz",
+                    "sha256": "x",
+                    "dest": "cache/0.27.0-normal/linux32"
                 },
                 {
                     "type": "patch",
@@ -124,6 +132,14 @@
                     "type": "script",
                     "dest-filename": "run.sh",
                     "commands": [ "/app/main/betaflight-configurator" ]
+                },
+                {
+                    "type": "file",
+                    "path": "io.github.betaflight.BetaflightConfigurator.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "io.github.betaflight.BetaflightConfigurator.appdata.xml"
                 }
             ],
             "build-commands": [
@@ -131,8 +147,12 @@
                 "npm install --offline --cache=/run/build/betaflight-configurator/npm-cache/",
                 "node_modules/gulp/bin/gulp.js apps",
                 "mkdir -p /app/main /app/bin",
-                "cp -ar apps/betaflight-configurator/*/* /app/main/",
-                "cp -ar run.sh /app/bin/"
+                "cp -ar apps/betaflight-configurator/*/* /app/main/ ",
+                "cp -ar run.sh /app/bin/",
+                "mkdir -p /app/share/icons/hicolor/128x128/apps /app/share/applications /app/share/appdata",
+                "install images/bf_icon_128.png /app/share/icons/hicolor/128x128/apps/io.github.betaflight.BetaflightConfigurator.png",
+                "install io.github.betaflight.BetaflightConfigurator.desktop /app/share/applications",
+                "install io.github.betaflight.BetaflightConfigurator.appdata.xml /app/share/appdata"
             ]
         }
     ]

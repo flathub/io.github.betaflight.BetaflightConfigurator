@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Betaflight Configurator
+Comment=Configuration tool for the cleanflight drone firmware
+Exec=run.sh
+Icon=io.github.betaflight.BetaflightConfigurator
+Categories=Utility;HardwareSettings;
