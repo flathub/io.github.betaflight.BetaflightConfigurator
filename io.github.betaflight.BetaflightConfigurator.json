@@ -88,6 +88,7 @@
                 "install -D ../dist/Release/lib/*.so /app/lib"
             ]
         },
+        "generated-modules.json",
         {
             "name": "betaflight-configurator",
             "build-options" : {
@@ -102,10 +103,6 @@
                     "type": "git",
                     "url": "https://github.com/betaflight/betaflight-configurator.git",
                     "tag": "10.0.0"
-                },
-                {
-                    "type": "patch",
-                    "path": "no-github-uri.patch"
                 },
                 {
                     "only-arches": ["x86_64"],
@@ -140,6 +137,12 @@
                 {
                     "type": "file",
                     "path": "io.github.betaflight.BetaflightConfigurator.appdata.xml"
+                },
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/flatpak-builder-tools.git",
+                    "commit": "83d9c6bd595b3f76b7f3c2cd7d966a8308ecf8d6",
+                    "dest": "flatpak-builder-tools"
                 }
             ],
             "build-commands": [
