@@ -21,6 +21,8 @@
         "--talk-name=org.gnome.GConf",
         /* It seems to call bluez */
         "--system-talk-name=org.bluez",
+        /* We want full fs access so we can read and write files, for e.g backups and firmware */
+        "--filesystem=host",
         /* Need usb device access */
         "--device=all"
     ],
