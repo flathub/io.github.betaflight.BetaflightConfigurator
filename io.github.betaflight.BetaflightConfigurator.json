@@ -90,7 +90,6 @@
                 "install -D ../dist/Release/lib/*.so /app/lib"
             ]
         },
-        "generated-modules.json",
         {
             "name": "betaflight-configurator",
             "build-options" : {
@@ -143,7 +142,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flatpak-builder-tools.git",
-                    "commit": "83d9c6bd595b3f76b7f3c2cd7d966a8308ecf8d6",
+                    "commit": "b856dadfd079aeb59582f3afddfdfd4bad544aa1",
                     "dest": "flatpak-builder-tools"
                 }
             ],
