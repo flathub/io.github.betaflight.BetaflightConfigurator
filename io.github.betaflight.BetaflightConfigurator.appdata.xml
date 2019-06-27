@@ -18,6 +18,7 @@
       the latest firmware version.
     </p>
   </description>
+  <content_rating type="oars-1.1" />
   <url type="homepage">https://github.com/betaflight/betaflight/wiki</url>
   <screenshots>
     <screenshot type="default">https://people.gnome.org/~alexl/betaflight-screenshot-1.png</screenshot>
