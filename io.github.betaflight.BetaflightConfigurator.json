@@ -69,7 +69,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/betaflight/betaflight-configurator.git",
-                    "tag": "10.1.0"
+                    "tag": "10.4.0"
                 },
                 {
                     "only-arches": ["x86_64"],
