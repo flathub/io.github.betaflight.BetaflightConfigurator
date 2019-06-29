@@ -1,9 +1,9 @@
 {
     "app-id": "io.github.betaflight.BetaflightConfigurator",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "1.6",
+    "runtime-version": "18.08",
     "base": "io.atom.electron.BaseApp",
-    "base-version": "stable",
+    "base-version": "18.08",
     "branch": "stable",
     "sdk": "org.freedesktop.Sdk",
     "command": "run.sh",
