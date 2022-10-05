@@ -1,16 +1,19 @@
 {
     "app-id": "io.github.betaflight.BetaflightConfigurator",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "21.08",
+    "runtime-version": "22.08",
     "base": "org.electronjs.Electron2.BaseApp",
-    "base-version": "21.08",
+    "base-version": "22.08",
     "sdk": "org.freedesktop.Sdk",
-    "sdk-extensions" : ["org.freedesktop.Sdk.Extension.node16"],
-    "command": "run.sh",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.node16"
+    ],
+    "command": "betaflight-configurator",
     "separate-locales": false,
     "finish-args": [
         /* X11 + XShm access */
-        "--share=ipc", "--socket=x11",
+        "--share=ipc",
+        "--socket=x11",
         /* Sound access */
         "--socket=pulseaudio",
         /* Network access */
@@ -25,31 +28,31 @@
         "--filesystem=host",
         /* Need usb device access */
         "--device=all",
-        "--metadata=X-DConf=migrate-path=/io/github/betaflight/BetaflightConfigurator/"
+        "--filesystem=/run/udev:ro",
+        "--metadata=X-DConf=migrate-path=/io/github/betaflight/BetaflightConfigurator/",
+        /* We get UPower errors otherwise */
+        "--socket=system-bus"
+    ],
+    "cleanup": [
+        "/lib/*.la",
+        "/lib/*.a"
     ],
     "modules": [
         {
             "name": "betaflight-configurator",
             "buildsystem": "simple",
-            "build-options": {
-                "append-path": "/usr/lib/sdk/node16/bin",
-                "env": {
-                    "CHROMEDRIVER_SKIP_DOWNLOAD": "true",
-                    "npm_config_nodedir": "/usr/lib/sdk/node16",
-                    "XDG_CACHE_HOME": "/run/build/betaflight-configurator/flatpak-node/cache"
-                }
-            },
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://github.com/betaflight/betaflight-configurator.git",
-                    "tag": "10.8.0"
+                    "type": "file",
+                    "only-arches": [
+                        "x86_64"
+                    ],
+                    "url": "https://github.com/betaflight/betaflight-configurator/releases/download/10.8.0/betaflight-configurator_10.8.0_amd64.deb",
+                    "sha256": "ec8d8c2da62a7b675e7a9d420ccf7a2e10161405b8eb80096750882cfe1472a5"
                 },
-                "generated-sources.json",
                 {
-                    "type": "script",
-                    "dest-filename": "run.sh",
-                    "commands": [ "/app/main/betaflight-configurator" ]
+                    "type": "file",
+                    "path": "run.sh"
                 },
                 {
                     "type": "file",
@@ -61,16 +64,16 @@
                 }
             ],
             "build-commands": [
-                "HOME=$PWD yarn config --offline set yarn-offline-mirror $FLATPAK_BUILDER_BUILDDIR/flatpak-node/yarn-mirror",
-                "yarn --offline",
-                "yarn gulp apps --linux64",
-                "mkdir -p /app/main /app/bin",
-                "cp -ar apps/betaflight-configurator/*/* /app/main/ ",
-                "cp -ar run.sh /app/bin/",
-                "mkdir -p /app/share/icons/hicolor/128x128/apps /app/share/applications /app/share/appdata",
-                "install images/bf_icon_128.png /app/share/icons/hicolor/128x128/apps/io.github.betaflight.BetaflightConfigurator.png",
-                "install io.github.betaflight.BetaflightConfigurator.desktop /app/share/applications",
-                "install io.github.betaflight.BetaflightConfigurator.appdata.xml /app/share/appdata"
+                "ar x betaflight-configurator_*.deb",
+                "rm betaflight-configurator_*.deb",
+                "tar xf data.tar.xz",
+                "cp -r 'opt/betaflight/betaflight-configurator' '/app/betaflight-configurator'",
+                "mkdir -p /app/share/icons/hicolor",
+                "chmod -R a-s,go+rX,go-w '/app/betaflight-configurator'",
+                "install run.sh /app/bin/betaflight-configurator",
+                "install -Dm644 /app/betaflight-configurator/images/bf_icon_128.png /app/share/icons/hicolor/128x128/apps/io.github.betaflight.BetaflightConfigurator.png",
+                "install -Dm644 io.github.betaflight.BetaflightConfigurator.desktop /app/share/applications/io.github.betaflight.BetaflightConfigurator.desktop",
+                "install -Dm644 io.github.betaflight.BetaflightConfigurator.appdata.xml /app/share/metainfo/io.github.betaflight.BetaflightConfigurator.metainfo.xml"
             ]
         }
     ]
