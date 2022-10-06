@@ -1,125 +1,78 @@
 {
-    "app-id": "io.github.betaflight.BetaflightConfigurator",
-    "runtime": "org.freedesktop.Platform",
-    "runtime-version": "18.08",
-    "base": "io.atom.electron.BaseApp",
-    "base-version": "18.08",
-    "branch": "stable",
-    "sdk": "org.freedesktop.Sdk",
-    "command": "run.sh",
-    "separate-locales": false,
-    "finish-args": [
-        /* X11 + XShm access */
-        "--share=ipc", "--socket=x11",
-        /* Sound access */
-        "--socket=pulseaudio",
-        /* Network access */
-        "--share=network",
-        /* Secrets access */
-        "--talk-name=org.freedesktop.secrets",
-        /* GConf */
-        "--talk-name=org.gnome.GConf",
-        /* It seems to call bluez */
-        "--system-talk-name=org.bluez",
-        /* We want full fs access so we can read and write files, for e.g backups and firmware */
-        "--filesystem=host",
-        /* Needed for dconf to work */
-        "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
-        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
-        /* Need usb device access */
-        "--device=all"
-    ],
-    "build-options" : {
-        "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g",
-        "env": {
-            "NPM_CONFIG_LOGLEVEL": "info"
-        }
-    },
-    "modules": [
+  "app-id": "io.github.betaflight.BetaflightConfigurator",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "22.08",
+  "base": "org.electronjs.Electron2.BaseApp",
+  "base-version": "22.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "betaflight-configurator",
+  "separate-locales": false,
+  "finish-args": [
+    /* X11 + XShm access */
+    "--share=ipc",
+    "--socket=x11",
+    /* Sound access */
+    "--socket=pulseaudio",
+    /* Network access */
+    "--share=network",
+    /* Secrets access */
+    "--talk-name=org.freedesktop.secrets",
+    /* GConf */
+    "--talk-name=org.gnome.GConf",
+    /* It seems to call bluez */
+    "--system-talk-name=org.bluez",
+    /* We want full fs access so we can read and write files, for e.g backups and firmware */
+    "--filesystem=host",
+    /* Need usb device access */
+    "--device=all",
+    "--filesystem=/run/udev:ro",
+    "--metadata=X-DConf=migrate-path=/io/github/betaflight/BetaflightConfigurator/",
+    /* We get UPower errors otherwise */
+    "--socket=system-bus"
+  ],
+  "cleanup": ["/lib/*.la", "/lib/*.a"],
+  "modules": [
+    {
+      "name": "betaflight-configurator",
+      "buildsystem": "simple",
+      "sources": [
         {
-            "name": "nodejs",
-            "cleanup": [
-                "/include",
-                "/share",
-                "/app/lib/node_modules/npm/changelogs",
-                "/app/lib/node_modules/npm/doc",
-                "/app/lib/node_modules/npm/html",
-                "/app/lib/node_modules/npm/man",
-                "/app/lib/node_modules/npm/scripts"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://nodejs.org/dist/v8.9.2/node-v8.9.2.tar.gz",
-                    "sha256": "8038fa61ac4562786fcc6d3229f3caa07a864b94bd5922fe75942a38ea1c3a3b"
-                }
-            ]
+          "type": "file",
+          "only-arches": ["x86_64"],
+          "url": "https://github.com/betaflight/betaflight-configurator/releases/download/10.8.0/betaflight-configurator_10.8.0_amd64.deb",
+          "sha256": "ec8d8c2da62a7b675e7a9d420ccf7a2e10161405b8eb80096750882cfe1472a5",
+          "x-checker-data": {
+            "type": "anitya",
+            "project-id": 294781,
+            "url-template": "https://github.com/betaflight/betaflight-configurator/releases/download/$version/betaflight-configurator_${version}_amd64.deb",
+            "is-main-source": true
+          }
         },
         {
-            "name": "betaflight-configurator",
-            "build-options" : {
-                "env": {
-                    /* Need this for electron-download to find the cached electron binary */
-                    "electron_config_cache": "/run/build/betaflight-configurator/npm-cache"
-                }
-            },
-            "buildsystem": "simple",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/betaflight/betaflight-configurator.git",
-                    "tag": "10.1.0"
-                },
-                {
-                    "only-arches": ["x86_64"],
-                    "type": "archive",
-                    "url": "https://dl.nwjs.io/v0.27.4/nwjs-v0.27.4-linux-x64.tar.gz",
-                    "sha256": "54688433befd7328d02166c49b084990e45a6525dc22226ff2a83fd2acce38ea",
-                    "dest": "cache/0.27.4-normal/linux64"
-                },
-                {
-                    "only-arches": ["i386"],
-                    "type": "archive",
-                    "url": "https://dl.nwjs.io/v0.27.4/nwjs-v0.27.4-linux-ia32.tar.gz",
-                    "sha256": "61aa033e29d85f178abce654194b8de287517d40b73ea26e466ad64dbd04af73",
-                    "dest": "cache/0.27.4-normal/linux32"
-                },
-                /* This file is autogenerated by: flatpak-npm-generator.py package-lock.json generated-sources.json */
-                "generated-sources.json",
-                /* Wrapper to launch the app */
-                {
-                    "type": "script",
-                    "dest-filename": "run.sh",
-                    "commands": [ "/app/main/betaflight-configurator" ]
-                },
-                {
-                    "type": "file",
-                    "path": "io.github.betaflight.BetaflightConfigurator.desktop"
-                },
-                {
-                    "type": "file",
-                    "path": "io.github.betaflight.BetaflightConfigurator.appdata.xml"
-                },
-                {
-                    "type": "git",
-                    "url": "https://github.com/flatpak/flatpak-builder-tools.git",
-                    "commit": "b856dadfd079aeb59582f3afddfdfd4bad544aa1",
-                    "dest": "flatpak-builder-tools"
-                }
-            ],
-            "build-commands": [
-                /* Install npm dependencies */
-                "npm install --offline --cache=/run/build/betaflight-configurator/npm-cache/",
-                "node_modules/gulp/bin/gulp.js apps",
-                "mkdir -p /app/main /app/bin",
-                "cp -ar apps/betaflight-configurator/*/* /app/main/ ",
-                "cp -ar run.sh /app/bin/",
-                "mkdir -p /app/share/icons/hicolor/128x128/apps /app/share/applications /app/share/appdata",
-                "install images/bf_icon_128.png /app/share/icons/hicolor/128x128/apps/io.github.betaflight.BetaflightConfigurator.png",
-                "install io.github.betaflight.BetaflightConfigurator.desktop /app/share/applications",
-                "install io.github.betaflight.BetaflightConfigurator.appdata.xml /app/share/appdata"
-            ]
+          "type": "file",
+          "path": "run.sh"
+        },
+        {
+          "type": "file",
+          "path": "io.github.betaflight.BetaflightConfigurator.desktop"
+        },
+        {
+          "type": "file",
+          "path": "io.github.betaflight.BetaflightConfigurator.appdata.xml"
         }
-    ]
+      ],
+      "build-commands": [
+        "ar x betaflight-configurator_*.deb",
+        "rm betaflight-configurator_*.deb",
+        "tar xf data.tar.xz",
+        "cp -r 'opt/betaflight/betaflight-configurator' '/app/betaflight-configurator'",
+        "mkdir -p /app/share/icons/hicolor",
+        "chmod -R a-s,go+rX,go-w '/app/betaflight-configurator'",
+        "install run.sh /app/bin/betaflight-configurator",
+        "install -Dm644 /app/betaflight-configurator/images/bf_icon_128.png /app/share/icons/hicolor/128x128/apps/io.github.betaflight.BetaflightConfigurator.png",
+        "install -Dm644 io.github.betaflight.BetaflightConfigurator.desktop /app/share/applications/io.github.betaflight.BetaflightConfigurator.desktop",
+        "install -Dm644 io.github.betaflight.BetaflightConfigurator.appdata.xml /app/share/metainfo/io.github.betaflight.BetaflightConfigurator.metainfo.xml"
+      ]
+    }
+  ]
 }
