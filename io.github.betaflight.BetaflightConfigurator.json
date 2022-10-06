@@ -5,7 +5,6 @@
   "base": "org.electronjs.Electron2.BaseApp",
   "base-version": "22.08",
   "sdk": "org.freedesktop.Sdk",
-  "sdk-extensions": ["org.freedesktop.Sdk.Extension.node16"],
   "command": "betaflight-configurator",
   "separate-locales": false,
   "finish-args": [
