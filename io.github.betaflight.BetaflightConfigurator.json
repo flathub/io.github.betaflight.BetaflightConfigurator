@@ -15,11 +15,11 @@
     "--talk-name=org.freedesktop.secrets",
     "--talk-name=org.gnome.GConf",
     "--system-talk-name=org.bluez",
-    "--filesystem=host",
+    "--system-talk-name=org.freedesktop.UPower",
+    "--filesystem=home",
     "--device=all",
     "--filesystem=/run/udev:ro",
-    "--metadata=X-DConf=migrate-path=/io/github/betaflight/BetaflightConfigurator/",
-    "--socket=system-bus"
+    "--metadata=X-DConf=migrate-path=/io/github/betaflight/BetaflightConfigurator/"
   ],
   "cleanup": ["/lib/*.la", "/lib/*.a"],
   "modules": [
