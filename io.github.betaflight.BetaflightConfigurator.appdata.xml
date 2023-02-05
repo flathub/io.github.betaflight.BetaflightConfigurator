@@ -35,19 +35,19 @@
   <url type="vcs-browser">https://github.com/betaflight/betaflight-configurator</url>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/flathub/io.github.betaflight.BetaflightConfigurator/master/screenshots/Betaflight1.png</image>
+      <image>https://raw.githubusercontent.com/flathub/io.github.betaflight.BetaflightConfigurator/080c10e93fdee0faf27777d248bd24caa18dc0c8/screenshots/Betaflight1.png</image>
       <caption>Welcome screen</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flathub/io.github.betaflight.BetaflightConfigurator/master/screenshots/Betaflight2.png</image>
+      <image>https://raw.githubusercontent.com/flathub/io.github.betaflight.BetaflightConfigurator/080c10e93fdee0faf27777d248bd24caa18dc0c8/screenshots/Betaflight2.png</image>
       <caption>Drone setup screen</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flathub/io.github.betaflight.BetaflightConfigurator/master/screenshots/Betaflight3.png</image>
+      <image>https://raw.githubusercontent.com/flathub/io.github.betaflight.BetaflightConfigurator/080c10e93fdee0faf27777d248bd24caa18dc0c8/screenshots/Betaflight3.png</image>
       <caption>Motor configuration screen</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flathub/io.github.betaflight.BetaflightConfigurator/master/screenshots/Betaflight4.png</image>
+      <image>https://raw.githubusercontent.com/flathub/io.github.betaflight.BetaflightConfigurator/080c10e93fdee0faf27777d248bd24caa18dc0c8/screenshots/Betaflight4.png</image>
       <caption>Integrated firmware flasher</caption>
     </screenshot>
   </screenshots>
