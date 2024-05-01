@@ -21,7 +21,10 @@
     "--filesystem=/run/udev:ro",
     "--metadata=X-DConf=migrate-path=/io/github/betaflight/BetaflightConfigurator/"
   ],
-  "cleanup": ["/lib/*.la", "/lib/*.a"],
+  "cleanup": [
+    "/lib/*.la",
+    "/lib/*.a"
+  ],
   "modules": [
     {
       "name": "betaflight-configurator",
@@ -29,9 +32,11 @@
       "sources": [
         {
           "type": "file",
-          "only-arches": ["x86_64"],
-          "url": "https://github.com/betaflight/betaflight-configurator/releases/download/10.9.0/betaflight-configurator_10.9.0_amd64.deb",
-          "sha256": "8fd14383274c03d340c51c323ac35b3fb9dae1fa267c259d384b6f80b9592aad",
+          "only-arches": [
+            "x86_64"
+          ],
+          "url": "https://github.com/betaflight/betaflight-configurator/releases/download/10.10.0/betaflight-configurator_10.10.0_amd64.deb",
+          "sha256": "78c1e0f6e087828a605bf2733955d89c51bc293302c2162179f00da9fba8417e",
           "x-checker-data": {
             "type": "anitya",
             "project-id": 294781,
