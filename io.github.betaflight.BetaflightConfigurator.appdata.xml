@@ -52,6 +52,7 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="10.10.0" date="2024-04-28"><url>https://github.com/betaflight/betaflight-configurator/releases/tag/10.10.0</url></release>
     <release version="10.9.0" date="2023-01-28"><url>https://github.com/betaflight/betaflight-configurator/releases/tag/10.9.0</url></release>
     <release version="10.8.0" date="2022-06-14"><url>https://github.com/betaflight/betaflight-configurator/releases/tag/10.8.0</url></release>
   </releases>
