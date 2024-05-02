@@ -5,6 +5,7 @@
   <project_license>GPL-3.0</project_license>
   <name>Betaflight Configurator</name>
   <developer_name>Betaflight</developer_name>
+  <launchable type="desktop-id">io.github.betaflight.BetaflightConfigurator.desktop</launchable>
   <summary>Crossplatform configuration tool for the Betaflight flight control system</summary>
   <description>
     <p>
