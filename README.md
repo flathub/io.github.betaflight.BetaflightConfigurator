@@ -3,7 +3,7 @@
 ## Building
 
 ```sh
-flatpak-builder build-dir --user --ccache --force-clean --install io.github.betaflight.BetaflightConfigurator.json
+flatpak run org.flatpak.Builder build-dir --user --ccache --force-clean --install io.github.betaflight.BetaflightConfigurator.json
 ```
 
 Then you can run it via the command line:
