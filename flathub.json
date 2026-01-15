@@ -1,3 +1,6 @@
 {
-    "only-arches": ["x86_64"]
+    "only-arches": [
+        "x86_64"
+    ],
+    "end-of-life": "This application is now provided as a PWA. Please visit the website at https://app.betaflight.com/ for more information."
 }
